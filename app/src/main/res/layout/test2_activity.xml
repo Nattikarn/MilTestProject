@@ -5,10 +5,12 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center">
-    <TextView
+    <Button
+        android:id="@+id/goToListView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="HELLO" />
-
+        android:gravity="center"
+        android:hint="@string/loginBtn"
+        android:textColorHint="@color/colorAccent1"
+        android:textSize="20dp"/>
 </LinearLayout>

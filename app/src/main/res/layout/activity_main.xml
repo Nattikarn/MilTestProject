@@ -44,17 +44,16 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center" />
 
             <Button
                 android:id="@+id/loginBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:hint="@string/loginBtn" />
+                android:hint="@string/loginBtn"
+                android:background="@drawable/loginbutton"
+                android:textColorHint="@color/colorAccent1"
+                android:textSize="17dp"/>
         </LinearLayout>
     </LinearLayout>
 
