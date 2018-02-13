@@ -2,6 +2,7 @@ package com.example.mil.miltestproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * Created by mil on 2/12/2018 AD.
  */
 
-public class ArrayListTest3 extends Test2 {
+public class ArrayListTest3 extends AppCompatActivity {
 
     private ListView listItem;
     private Button backbtn;
@@ -27,11 +28,12 @@ public class ArrayListTest3 extends Test2 {
         Intent intent = getIntent();
         backbtn();
 
-        ListView myItem = findViewById(R.id.listItem);
         myItemList = new ArrayList<String>();
         getListItem();
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myItemList);
+
+        ListView myItem = findViewById(R.id.listItem);
         myItem.setAdapter(arrayAdapter);
     }
 

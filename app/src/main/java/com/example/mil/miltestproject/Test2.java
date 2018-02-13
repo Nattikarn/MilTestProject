@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import junit.framework.Test;
+
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -46,6 +48,7 @@ public class Test2 extends MainActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Test2.this, ArrayListTest3.class);
                 startActivity(intent);
+                Test2.this.finish();
 
             }
         });
