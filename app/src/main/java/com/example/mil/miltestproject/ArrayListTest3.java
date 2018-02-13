@@ -70,6 +70,4 @@ public class ArrayListTest3 extends Test2 {
             }
         });
     }
-
-
 }
