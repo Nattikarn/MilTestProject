@@ -16,6 +16,7 @@ import junit.framework.Test;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Created by mil on 2/9/2018 AD.
@@ -23,7 +24,7 @@ import java.net.URL;
 
 public class Test2 extends MainActivity {
 
-    protected Button goToListView, addBtn;
+    protected Button goToListView, clickToJson;
     EditText text1;
 
     @Override
@@ -32,12 +33,12 @@ public class Test2 extends MainActivity {
         setContentView(R.layout.test2_activity);
 
         goToListView = findViewById(R.id.goToListView);
-        addBtn = findViewById(R.id.addBtn);
+        clickToJson = findViewById(R.id.clickToJson);
         text1 = findViewById(R.id.text1);
 
         Intent intent = getIntent();
         goToListView();
-        addBtn();
+        clickToJson();
 
     }
 
@@ -54,11 +55,14 @@ public class Test2 extends MainActivity {
         });
     }
 
-    private void addBtn() {
+    private void clickToJson() {
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        clickToJson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(Test2.this, ArrayListJSON.class);
+                startActivity(intent);
+                Test2.this.finish();
             }
         });
 

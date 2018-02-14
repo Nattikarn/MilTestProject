@@ -18,11 +18,11 @@
         android:textColorHint="@color/colorAccent1"
         android:textSize="20dp"/>
     <Button
-        android:id="@+id/addBtn"
+        android:id="@+id/clickToJson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Add"
+        android:hint="Click to JSON List View"
         android:textColorHint="@color/colorAccent1"
         android:textSize="20dp"/>
 </LinearLayout>

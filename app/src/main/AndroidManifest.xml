@@ -32,6 +32,10 @@
         <activity android:name=".ArrayListTest3">
 
         </activity>
+
+        <activity android:name=".ArrayListJSON">
+
+        </activity>
     </application>
 
 </manifest>
