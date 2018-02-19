@@ -7,7 +7,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -34,6 +36,7 @@ public class ArrayListJSON extends AppCompatActivity {
     private ListView json_listview;
     ArrayList<String> exData;
     private ProgressDialog progressDialog; //ขึ้นหมุนๆ
+    private Button restbtn;
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -44,6 +47,8 @@ public class ArrayListJSON extends AppCompatActivity {
         Intent intent = getIntent();
 
         json_listview = findViewById(R.id.json_listview);
+        restbtn = findViewById(R.id.restbtn);
+        restbtn();
 
         exData = new ArrayList<String>();
 //        exData.add("Test1");
@@ -91,7 +96,7 @@ public class ArrayListJSON extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(stringBuilder.toString());
                         JSONArray exArray = jsonObject.getJSONArray("students"); //ex นี่คือ Array ละ
 
-                        for(int i = 0; i < exArray.length(); i++){
+                        for (int i = 0; i < exArray.length(); i++) {
                             JSONObject jsonObj = exArray.getJSONObject(i);
                             exData.add(jsonObj.getString("student_name"));// add ไปใส่ใน exdata
 
@@ -123,6 +128,16 @@ public class ArrayListJSON extends AppCompatActivity {
         }.execute();
 
 
+    }
+
+    private void restbtn() {
+        restbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ArrayListJSON.this, PostActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

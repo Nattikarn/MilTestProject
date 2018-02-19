@@ -12,6 +12,14 @@
     <ListView
         android:id="@+id/json_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/restbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="CLICK HERE!"
+        android:textColorHint="@color/colorAccent1"
+        android:textSize="20dp"/>
 </LinearLayout>

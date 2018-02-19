@@ -36,6 +36,9 @@
         <activity android:name=".ArrayListJSON">
 
         </activity>
+        <activity android:name=".PostActivity">
+
+        </activity>
     </application>
 
 </manifest>
