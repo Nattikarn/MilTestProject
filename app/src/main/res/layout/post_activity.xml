@@ -5,7 +5,8 @@
     android:id="@+id/activity_post"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -28,13 +29,22 @@
         android:hint="Body"/>
 
     <Button
-        android:id="@+id/btn_submit"
-        android:layout_marginTop="18dp"
+        android:id="@+id/btn_post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
         android:background="@color/colorAccent"
-        android:textColor="@android:color/white"
-        android:text="Submit"/>
+        android:text="POST"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="@color/colorAccent2"
+        android:text="GET"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/tv_response"

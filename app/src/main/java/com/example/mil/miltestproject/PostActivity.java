@@ -1,11 +1,11 @@
 package com.example.mil.miltestproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,10 +15,14 @@ import com.example.mil.miltestproject.ApiUtitilies.ApiUtils;
 import com.example.mil.miltestproject.ApiUtitilies.RetrofitInterface;
 import com.example.mil.miltestproject.Model.Post;
 
+import java.util.concurrent.Callable;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Body;
+import rx.Observable;
+import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by mil on 2/16/2018 AD.
@@ -28,7 +32,7 @@ public class PostActivity extends Activity implements View.OnClickListener {
 
     private RetrofitInterface mRetrofitInterface;
     private TextView mResponseTv;
-    private Button submitBtn;
+    private Button postBtn, viewBtn;
     private EditText titleEt, bodyEt;
 
     @Override
@@ -38,18 +42,20 @@ public class PostActivity extends Activity implements View.OnClickListener {
 
         titleEt = findViewById(R.id.et_title);
         bodyEt = findViewById(R.id.et_body);
-        submitBtn = findViewById(R.id.btn_submit);
+        postBtn = findViewById(R.id.btn_post);
+        viewBtn = findViewById(R.id.btn_view);
         mResponseTv = findViewById(R.id.tv_response);
+
+        postBtn.setOnClickListener(this);
+        viewBtn.setOnClickListener(this);
 
         mRetrofitInterface = ApiUtils.getRetrofitInterface();
 
-        submitBtn.setOnClickListener(this);
     }
-
 
     public void onClick(View view) {
 
-        if (view.getId() == R.id.btn_submit) {
+        if (view.getId() == R.id.btn_post) {
             String title = titleEt.getText().toString().trim();
             String body = bodyEt.getText().toString().trim();
 
@@ -57,6 +63,11 @@ public class PostActivity extends Activity implements View.OnClickListener {
             if (!TextUtils.isEmpty(title) && !TextUtils.isEmpty(body)) {
                 sendPost(title, body);
             }
+        }
+
+        else if (view.getId() == R.id.btn_view) {
+            Intent intent = new Intent(PostActivity.this, ViewActivity.class);
+            startActivity(intent);
         }
 
     }
@@ -82,7 +93,6 @@ public class PostActivity extends Activity implements View.OnClickListener {
             }
         });
     }
-
 
 
 

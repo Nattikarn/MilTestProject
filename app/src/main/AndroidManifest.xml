@@ -39,6 +39,9 @@
         <activity android:name=".PostActivity">
 
         </activity>
+        <activity android:name=".ViewActivity">
+
+        </activity>
     </application>
 
 </manifest>

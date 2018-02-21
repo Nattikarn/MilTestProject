@@ -21,7 +21,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       // ส่วนของ Retrofit
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+        loginBtn = (Button) findViewById(R.id.loginBtn);
+
+
+        // ส่วนของ Retrofit
         apiService = ApiUtils.getRetrofitInterface();
         loginBtn();
         UserLogin user = new UserLogin();
@@ -33,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loginBtn() {
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        loginBtn = findViewById(R.id.loginBtn);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
