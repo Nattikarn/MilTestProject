@@ -1,6 +1,8 @@
 package com.example.mil.miltestproject;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,8 +26,10 @@ import java.util.ArrayList;
 
 public class Test2 extends MainActivity {
 
-    protected Button goToListView, clickToJson;
-    EditText text1;
+    private Button goToListView, clickToJson, alertBtn;
+    private EditText text1;
+    private AlertDialog.Builder alertDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +40,46 @@ public class Test2 extends MainActivity {
         clickToJson = findViewById(R.id.clickToJson);
         text1 = findViewById(R.id.text1);
 
+        alertBtn = (Button) findViewById(R.id.alertBtn);
+
         Intent intent = getIntent();
         goToListView();
         clickToJson();
+
+        alertBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog = new AlertDialog.Builder(Test2.this);
+
+                alertDialog.setTitle(R.string.alertDialog);
+
+                alertDialog.setMessage("ERRORRRR");
+
+                alertDialog.setCancelable(false);
+
+                Log.d("AlertBtn","Here");
+                alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Test2.this.finish();
+                        Log.d("finish","finish");
+                    }
+                });
+                Log.d("AlertBtn","cancel");
+
+                alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        Log.d("cancel","cancel");
+                    }
+                });
+
+                alertDialog.show();
+            }
+        });
+
+
 
     }
 
@@ -71,11 +112,11 @@ public class Test2 extends MainActivity {
 
     //คลาสที่ใช้ทำงานอะไรบางอย่างใน background task ของ Android
     // ่วนใหญ่ถูกนำมาใช้จัดการ เรื่อง HttpRequest , การติดต่อกับฝั่ง Web Server
-    public class HttpGetRequest extends AsyncTask<String, Void, String>{
+    public class HttpGetRequest extends AsyncTask<String, Void, String> {
 
         private ProgressDialog progressDialog = new ProgressDialog(Test2.this);
 
-        protected void onPreExecute(){
+        protected void onPreExecute() {
             super.onPreExecute();
             // เริ่มต้นกำหนดค่าอะไรๆก่อนทำงานใน doInBackground
             progressDialog.setMessage("..Loading..");
@@ -88,7 +129,7 @@ public class Test2 extends MainActivity {
             return null;
         }
 
-        protected void onPostExecute(String response){
+        protected void onPostExecute(String response) {
             progressDialog.dismiss();
             // หลังจาก doInBackground เสร็จอัพเดท UI ให้ผู้ใช้รู้
         }
