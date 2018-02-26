@@ -44,7 +44,6 @@ public class ArrayListJSON extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.arraylistjson_activity);
-        Intent intent = getIntent();
 
         json_listview = findViewById(R.id.json_listview);
         restbtn = findViewById(R.id.restbtn);

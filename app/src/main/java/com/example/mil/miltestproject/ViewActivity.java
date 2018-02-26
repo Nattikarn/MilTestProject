@@ -38,19 +38,24 @@ public class ViewActivity extends Activity {
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     private SeekBar seekBarId;
-    private TextView resultSeekbar;
+    private TextView resultSeekbar, showMessage;
+    private int seekbarPercentage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_activity);
 
-        Intent intent = getIntent();
-
         viewpost_list = (ListView) findViewById(R.id.viewpost_list);
-
         resultSeekbar = (TextView) findViewById(R.id.resultSeekbar);
+        showMessage = (TextView) findViewById(R.id.showMessage);
+
+        if (showMessage != null){
+            showMessage.setText(getIntent().getStringExtra("Message"));
+        }
+
         seekBarId = (SeekBar) findViewById(R.id.seekbarId);
+
         resultSeekbar.setText("Score: " + seekBarId.getProgress() + "/" + seekBarId.getMax());
         seekBarId.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -65,7 +70,8 @@ public class ViewActivity extends Activity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-            resultSeekbar.setTextColor(Color.RED);
+                seekbarPercentage = seekBar.getProgress();
+                resultSeekbar.setTextColor(Color.RED);
             }
         });
 
@@ -77,7 +83,7 @@ public class ViewActivity extends Activity {
             }
         });
 
-       // mRetrofitInterface = ApiUtils.getRetrofitInterface();
+        // mRetrofitInterface = ApiUtils.getRetrofitInterface();
 
 //        getAnswer();
     }

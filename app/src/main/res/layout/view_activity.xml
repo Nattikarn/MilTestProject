@@ -14,11 +14,20 @@
         android:id="@+id/seekbarId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:max="10"
         android:progressDrawable="@drawable/seekbarstyle"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/resultSeekbar" />
+
+    <TextView
+        android:id="@+id/showMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="There is nothing happen here yet."/>
 
     <ListView
         android:id="@+id/viewpost_list"

@@ -25,7 +25,6 @@ public class ArrayListTest3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.arraylist_activity);
 
-        Intent intent = getIntent();
         backbtn();
 
         myItemList = new ArrayList<String>();

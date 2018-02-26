@@ -2,6 +2,7 @@ package com.example.mil.miltestproject;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import junit.framework.Test;
 
@@ -26,7 +29,7 @@ import java.util.ArrayList;
 
 public class Test2 extends MainActivity {
 
-    private Button goToListView, clickToJson, alertBtn;
+    private Button goToListView, clickToJson, alertBtn, passValueBtn;
     private EditText text1;
     private AlertDialog.Builder alertDialog;
 
@@ -39,12 +42,23 @@ public class Test2 extends MainActivity {
         goToListView = findViewById(R.id.goToListView);
         clickToJson = findViewById(R.id.clickToJson);
         text1 = findViewById(R.id.text1);
-
+        passValueBtn = findViewById(R.id.passValueBtn);
         alertBtn = (Button) findViewById(R.id.alertBtn);
 
-        Intent intent = getIntent();
+
+        Toast.makeText(getApplication(), "Gogo", Toast.LENGTH_SHORT).show();
+
         goToListView();
         clickToJson();
+
+        passValueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Test2.this, ViewActivity.class);
+                intent.putExtra("Message", text1.getText().toString());
+                startActivity(intent);
+            }
+        });
 
         alertBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +88,7 @@ public class Test2 extends MainActivity {
                         Log.d("cancel","cancel");
                     }
                 });
-
+                AlertDialog dialog = alertDialog.create();
                 alertDialog.show();
             }
         });
@@ -88,8 +102,7 @@ public class Test2 extends MainActivity {
         goToListView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Test2.this, ArrayListTest3.class);
-                startActivity(intent);
+                startActivity(new Intent(Test2.this, ArrayListTest3.class));
                 Test2.this.finish();
 
             }
