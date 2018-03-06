@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class Test2 extends MainActivity {
 
-    private Button goToListView, clickToJson, alertBtn, passValueBtn;
+    private Button goToListView, clickToJson, alertBtn, passValueBtn, recycleBtn;
     private EditText text1;
     private AlertDialog.Builder alertDialog;
 
@@ -44,6 +44,15 @@ public class Test2 extends MainActivity {
         text1 = findViewById(R.id.text1);
         passValueBtn = findViewById(R.id.passValueBtn);
         alertBtn = (Button) findViewById(R.id.alertBtn);
+        recycleBtn = (Button) findViewById(R.id.recycleBtn);
+
+        recycleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Test2.this, RecycleView.class);
+                startActivity(intent);
+            }
+        });
 
 
         Toast.makeText(getApplication(), "Gogo", Toast.LENGTH_SHORT).show();

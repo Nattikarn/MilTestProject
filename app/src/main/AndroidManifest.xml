@@ -42,6 +42,9 @@
         <activity android:name=".ViewActivity">
 
         </activity>
+        <activity android:name=".RecycleView">
+
+        </activity>
     </application>
 
 </manifest>
